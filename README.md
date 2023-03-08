@@ -1,8 +1,6 @@
 # Question Generator #
 
-TODO Describe the plugin shortly here.
-
-TODO Provide more detailed description here.
+Moodle plugin for generating different type of questions integrated with DaVinci AI model.
 
 ## Installing via uploaded ZIP file ##
 
