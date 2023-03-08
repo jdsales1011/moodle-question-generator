@@ -27,7 +27,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Question Generator';
 
-$string['questiongeneration'] = 'Question Generation';
 $string['entercontext'] = 'Enter context';
 $string['enter_num_questions'] = 'Enter number of questions';
 $string['generate'] = 'Generate';

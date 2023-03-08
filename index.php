@@ -46,7 +46,7 @@ $generatorform->display();
 // If form is submitted, retrieve data from form.
 if ($data = $generatorform->get_data()) {
     // Save text to context variable.
-    $context = required_param('message', PARAM_TEXT);
+    $context = required_param('context', PARAM_TEXT);
     $number = required_param('num_ques', PARAM_INT);
     $qtype = required_param('type_question', PARAM_INT);
 

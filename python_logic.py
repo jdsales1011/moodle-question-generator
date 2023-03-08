@@ -4,7 +4,7 @@ import os
 # !pip install --upgrade openai
 # import openai
 
-os.environ['OPENAI_API_KEY']='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'
+# os.environ['OPENAI_API_KEY']='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'
 # openai.api_key = os.getenv("OPENAI_API_KEY")
 
 context = sys.argv[1]
@@ -36,11 +36,41 @@ prompt_creators = {
     4: prompt_creator4(context, number),
 }
 
-# ENTER
-# CODE FOR 
-# AI HERE
+
+# AI PREDICT FUNCTION
+# def predict_questions(prompt):
+#   result =[]
+#   openai.api_key = os.getenv("OPENAI_API_KEY")
+
+#   response = openai.Completion.create(
+#     model="text-davinci-003",
+#     prompt=prompt,
+#     temperature=0.7,
+#     max_tokens=256,
+#     top_p=1,
+#     frequency_penalty=0,
+#     presence_penalty=0
+#   )
+
+#   new = response['choices'][0]['text']
+# #   result = new.split('\n')
+  
+
+# #   result = [x for x in result if x.strip()]       # TO REMOVE EMPTY NEXT LINES
+
+#   # for index, data in enumerate(result):
+#   #   if index%2 == 0:          # QUESTION
+#   #     result[index] = data.split(".", 1)[1].strip()
+#   #   else:                     # ANSWER
+#   #     result[index] = data.split("Answer:", 1)[1].strip()
+
+# #   return result
+#   return new
+
 
 prompt = prompt_creators[q_type]
 print(prompt)
+print("testing")
 
 # PREDICT CODE HERE
+# print(predict_questions(prompt))

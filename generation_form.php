@@ -32,8 +32,8 @@ class local_questiongenerator_generation_form extends moodleform {
         $mform = $this->_form;
 
         // Add textarea.
-        $mform->addElement('textarea', 'message', get_string('entercontext', 'local_questiongenerator', 'wrap="virtual" rows="20" cols="50"'));
-        $mform->setType('message', PARAM_TEXT);
+        $mform->addElement('textarea', 'context', get_string('entercontext', 'local_questiongenerator', 'wrap="virtual" rows="20" cols="50"'));
+        $mform->setType('context', PARAM_TEXT);
 
         // Add num element.
         $mform->addElement('float', 'num_ques', get_string('enter_num_questions', 'local_questiongenerator'));
