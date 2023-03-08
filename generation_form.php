@@ -32,23 +32,23 @@ class local_questiongenerator_generation_form extends moodleform {
         $mform = $this->_form;
 
         // Add textarea.
-        $mform->addElement('textarea', 'message', get_string('entercontext', 'local_greetings', 'wrap="virtual" rows="20" cols="50"'));
+        $mform->addElement('textarea', 'message', get_string('entercontext', 'local_questiongenerator', 'wrap="virtual" rows="20" cols="50"'));
         $mform->setType('message', PARAM_TEXT);
 
         // Add num element.
-        $mform->addElement('float', 'num_ques', get_string('enter_num_questions', 'local_greetings'));
+        $mform->addElement('float', 'num_ques', get_string('enter_num_questions', 'local_questiongenerator'));
 
         // Add type of question radio element.
         $radioarray = array();
-        $radioarray[] = $mform->createElement('radio', 'type_question', '', "Identification", 1);
-        $radioarray[] = $mform->createElement('radio', 'type_question', '', "True or False", 2);
-        $radioarray[] = $mform->createElement('radio', 'type_question', '', "Multiple Choice", 3);
-        $radioarray[] = $mform->createElement('radio', 'type_question', '', "Essay Questions", 4);
+        $radioarray[] = $mform->createElement('radio', 'type_question', '', get_string('identification', 'local_questiongenerator'), 1);
+        $radioarray[] = $mform->createElement('radio', 'type_question', '', get_string('trueorfalse', 'local_questiongenerator'), 2);
+        $radioarray[] = $mform->createElement('radio', 'type_question', '', get_string('multichoice', 'local_questiongenerator'), 3);
+        $radioarray[] = $mform->createElement('radio', 'type_question', '', get_string('essayques', 'local_questiongenerator'), 4);
         $mform->setDefault('type_question', 1);
-        $mform->addGroup($radioarray, 'radioar', 'Type of Question', array(' '), false);
+        $mform->addGroup($radioarray, 'radioar', get_string('type_of_ques', 'local_questiongenerator'), array(' '), false);
 
         // Add submit button.
-        $submitlabel = get_string('generate', 'local_greetings');
+        $submitlabel = get_string('generate', 'local_questiongenerator');
         $mform->addElement('submit', 'submitmessage', $submitlabel);
     }
 }

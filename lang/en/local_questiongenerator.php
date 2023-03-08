@@ -27,8 +27,12 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Question Generator';
 
-// QG strings.
 $string['questiongeneration'] = 'Question Generation';
 $string['entercontext'] = 'Enter context';
 $string['enter_num_questions'] = 'Enter number of questions';
 $string['generate'] = 'Generate';
+$string['identification'] = 'Identification';
+$string['trueorfalse'] = 'True or False';
+$string['multichoice'] = 'Multiple Choice';
+$string['essayques'] = 'Essay Questions';
+$string['type_of_ques'] = 'Type of Question';
