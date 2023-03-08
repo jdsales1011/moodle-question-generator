@@ -27,7 +27,7 @@ to complete the installation from the command line.
 
 ## License ##
 
-2023 Jivielyn Sales
+2023 Jivielyn Sales <jivielyn.sales@gmail.com>
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
