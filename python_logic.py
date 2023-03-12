@@ -1,19 +1,19 @@
 import sys
 import os
 
-import openai
+# import openai
 
 os.environ['OPENAI_API_KEY']='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'
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# context = sys.argv[1]
-# number = int (sys.argv[2])
-# q_type = int(sys.argv[3])
-number = 2
-q_type = 1
-context = '''
-Architecturally, the school has a Catholic character. Atop the Main Building's gold dome is a golden statue of the Virgin Mary.
-'''
+context = sys.argv[1]
+number = int (sys.argv[2])
+q_type = int(sys.argv[3])
+# number = 3
+# q_type = 2
+# context = '''
+# Architecturally, the school has a Catholic character. Atop the Main Building's gold dome is a golden statue of the Virgin Mary.
+# '''
 
 
 def prompt_creator1(context, num=1): #identification
@@ -71,4 +71,4 @@ prompt = prompt_creators[q_type]
 print(prompt)
 
 # PREDICT CODE HERE
-print(predict_questions(prompt))
+# print(predict_questions(prompt))
