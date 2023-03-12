@@ -33,6 +33,16 @@ $PAGE->set_pagelayout('standard');
 $PAGE->set_title($SITE->fullname);
 $PAGE->set_heading(get_string('pluginname', 'local_questiongenerator'));
 
+// API.
+$ch = curl_init();          // Initialize a new cURL session.
+$url = "http://127.0.0.1:2000/result";
+curl_setopt($ch, CURLOPT_URL, $url);
+// Set the request headers.
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json'
+));
+
+
 // INITIALIZE FORM.
 $generatorform = new local_questiongenerator_generation_form();
 
@@ -50,8 +60,57 @@ if ($data = $generatorform->get_data()) {
     $number = required_param('num_ques', PARAM_INT);
     $qtype = required_param('type_question', PARAM_INT);
 
-    $output = shell_exec('python3 python_logic.py "' . escapeshellarg($context) . '" ' . escapeshellarg($number) . ' ' . escapeshellarg($qtype));
-    echo $output;
+    // GET REQUEST.
+    /*
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+
+    if($err = curl_error($ch)) {
+        echo $err;
+    }
+    else {
+        $decoded = json_decode($response, true);
+        print_r($decoded);
+    }*/
+
+    // POST REQUEST.
+    $data_array = array(
+        'num1' => 20,
+        'num2' => 30,
+    );
+
+    $data = json_encode($data_array);
+
+    echo $data;
+
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+
+    echo $response;
+
+    if($err = curl_error($ch)) {
+        echo $err;
+    }
+    else {
+        $decoded = json_decode($response, true);
+        print_r($decoded);
+
+        // foreach($decoded as $key => $val) {
+        //     echo f"{$key}: {$val} <br>";
+        // }
+    }
+
+
+
+
+
+    curl_close($ch);
+    
+    echo $response;
 }
 
 echo $OUTPUT->footer();
