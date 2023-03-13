@@ -35,7 +35,7 @@ $PAGE->set_heading(get_string('pluginname', 'local_questiongenerator'));
 
 // API.
 $ch = curl_init();          // Initialize a new cURL session.
-$url = "http://127.0.0.1:2000/result";
+$url = "http://127.0.0.1:2000/qgplugin/api/";
 curl_setopt($ch, CURLOPT_URL, $url);
 // Set the request headers.
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -60,29 +60,13 @@ if ($data = $generatorform->get_data()) {
     $number = required_param('num_ques', PARAM_INT);
     $qtype = required_param('type_question', PARAM_INT);
 
-    // GET REQUEST.
-    /*
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    $response = curl_exec($ch);
-
-    if($err = curl_error($ch)) {
-        echo $err;
-    }
-    else {
-        $decoded = json_decode($response, true);
-        print_r($decoded);
-    }*/
-
     // POST REQUEST.
     $data_array = array(
-        'num1' => 20,
-        'num2' => 30,
+        'number' => $number,
+        'type' => $qtype,
     );
 
     $data = json_encode($data_array);
-
-    echo $data;
 
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
@@ -97,20 +81,14 @@ if ($data = $generatorform->get_data()) {
     }
     else {
         $decoded = json_decode($response, true);
-        print_r($decoded);
+        // print_r($decoded);
 
         // foreach($decoded as $key => $val) {
         //     echo f"{$key}: {$val} <br>";
         // }
     }
 
-
-
-
-
     curl_close($ch);
-    
-    echo $response;
 }
 
 echo $OUTPUT->footer();
