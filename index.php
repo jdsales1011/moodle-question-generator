@@ -63,12 +63,16 @@ if ($data = $generatorform->get_data()) {           // add optional AND $attachm
     if ($name = $generatorform->get_new_filename('uploaded_file')) {
         // Save text file content to content variable.
         $content = $generatorform->get_file_content('uploaded_file');
+        // $file = $generatorform->get_file('uploaded_file');
+        // echo $file;
     }
     else {
         // Get the content from the text field.
         $content = required_param('content', PARAM_TEXT);
         // echo "no attachment found";
     }
+
+    echo "CONTENT! {$content} <br>";
 
     // POST REQUEST.
     $data_array = array(
@@ -85,7 +89,7 @@ if ($data = $generatorform->get_data()) {           // add optional AND $attachm
 
     $response = curl_exec($ch);
 
-    echo $response;
+    // echo $response;
 
     if($err = curl_error($ch)) {
         echo $err;
@@ -94,9 +98,9 @@ if ($data = $generatorform->get_data()) {           // add optional AND $attachm
         $decoded = json_decode($response, true);
         // print_r($decoded);
 
-        // foreach($decoded as $key => $val) {
-        //     echo f"{$key}: {$val} <br>";
-        // }
+        foreach($decoded as $key => $val) {
+            echo "{$key}:" , implode("<br>", $val), "<br><br>";
+        }
     }
 
     curl_close($ch);
