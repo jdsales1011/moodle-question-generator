@@ -62,6 +62,7 @@ if ($data = $generatorform->get_data()) {
 
     // POST REQUEST.
     $data_array = array(
+        'context' => $context,
         'number' => $number,
         'type' => $qtype,
     );
