@@ -32,8 +32,8 @@ class local_questiongenerator_generation_form extends moodleform {
         $mform = $this->_form;
 
         // Add textarea.
-        $mform->addElement('textarea', 'context', get_string('entercontext', 'local_questiongenerator', 'wrap="virtual" rows="20" cols="50"'));
-        $mform->setType('context', PARAM_TEXT);
+        $mform->addElement('textarea', 'content', get_string('entercontext', 'local_questiongenerator', 'wrap="virtual" rows="20" cols="50"'));
+        $mform->setType('content', PARAM_TEXT);
 
         // Add num element.
         $mform->addElement('float', 'num_ques', get_string('enter_num_questions', 'local_questiongenerator'));
@@ -46,6 +46,18 @@ class local_questiongenerator_generation_form extends moodleform {
         $radioarray[] = $mform->createElement('radio', 'type_question', '', get_string('essayques', 'local_questiongenerator'), 4);
         $mform->setDefault('type_question', 1);
         $mform->addGroup($radioarray, 'radioar', get_string('type_of_ques', 'local_questiongenerator'), array(' '), false);
+
+        // File upload.
+        $mform->addElement(
+            'filepicker',
+            'uploaded_file',
+            get_string('file'),
+            null,
+            [
+                'maxbytes' => $maxbytes,
+                'accepted_types' => '*',
+            ]
+        );
 
         // Add submit button.
         $submitlabel = get_string('generate', 'local_questiongenerator');

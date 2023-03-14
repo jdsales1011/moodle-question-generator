@@ -54,15 +54,25 @@ echo '<h4> Generate questions based on the inputed article/resource </h4>';
 $generatorform->display();
 
 // If form is submitted, retrieve data from form.
-if ($data = $generatorform->get_data()) {
-    // Save text to context variable.
-    $context = required_param('context', PARAM_TEXT);
+if ($data = $generatorform->get_data()) {           // add optional AND $attachment_file
     $number = required_param('num_ques', PARAM_INT);
     $qtype = required_param('type_question', PARAM_INT);
 
+    $content = "";
+
+    if ($name = $generatorform->get_new_filename('uploaded_file')) {
+        // Save text file content to content variable.
+        $content = $generatorform->get_file_content('uploaded_file');
+    }
+    else {
+        // Get the content from the text field.
+        $content = required_param('content', PARAM_TEXT);
+        // echo "no attachment found";
+    }
+
     // POST REQUEST.
     $data_array = array(
-        'context' => $context,
+        'content' => $content,
         'number' => $number,
         'type' => $qtype,
     );

@@ -29,3 +29,7 @@ $plugin->release = '0.1.0';
 $plugin->version = 2023030800;
 $plugin->requires = 2020061500;
 $plugin->maturity = MATURITY_ALPHA;
+
+$plugin->dependencies = array(
+    'mod_filemanager' => ANY_VERSION
+);
