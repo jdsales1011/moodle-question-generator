@@ -39,7 +39,7 @@ $url = "http://127.0.0.1:2000/qgplugin/api/";
 curl_setopt($ch, CURLOPT_URL, $url);
 // Set the request headers.
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json'
+    'Content-Type: multipart/form-data'
 ));
 
 
@@ -60,11 +60,30 @@ if ($data = $generatorform->get_data()) {           // add optional AND $attachm
 
     $content = "";
 
+    // /Applications/MAMP/htdocs/moodle/local/questiongenerator/temp
+    // $success = $mform->save_file('userfile', $fullpath, $override);
+    // $storedfile = $mform->save_stored_file('userfile', ...);
+
+
     if ($name = $generatorform->get_new_filename('uploaded_file')) {
         // Save text file content to content variable.
         $content = $generatorform->get_file_content('uploaded_file');
-        // $file = $generatorform->get_file('uploaded_file');
-        // echo $file;
+
+        $file_name = $generatorform->get_new_filename('uploaded_file');
+        $file_path = "temp/".$file_name;
+        $success = $generatorform->save_file('uploaded_file', $file_path);
+
+        if(!$success){
+            echo "Oops! Something went wrong!";
+            $content = required_param('content', PARAM_TEXT);
+        }
+        else{
+            // Create file handle.
+            $file_handle = fopen($file_path, 'r');
+
+            // SET THE CONTENT AS THE FILE HERE
+            echo "File saved successfully in {$file_path} <br>";
+        }
     }
     else {
         // Get the content from the text field.
@@ -72,38 +91,40 @@ if ($data = $generatorform->get_data()) {           // add optional AND $attachm
         // echo "no attachment found";
     }
 
-    echo "CONTENT! {$content} <br>";
-
     // POST REQUEST.
     $data_array = array(
+        'file' => curl_file_create($file_path),
         'content' => $content,
         'number' => $number,
-        'type' => $qtype,
+        'type' => $qtype
     );
 
     $data = json_encode($data_array);
+    // "DAtaa: {$data_array} <br> {$data} <br>";
 
     curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_array);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
+    
     $response = curl_exec($ch);
 
-    // echo $response;
+    echo $response;
 
-    if($err = curl_error($ch)) {
-        echo $err;
-    }
-    else {
-        $decoded = json_decode($response, true);
-        // print_r($decoded);
+    // if($err = curl_error($ch)) {
+    //     echo $err;
+    // }
+    // else {
+    //     $decoded = json_decode($response, true);
+    //     // print_r($decoded);
 
-        foreach($decoded as $key => $val) {
-            echo "{$key}:" , implode("<br>", $val), "<br><br>";
-        }
-    }
+    //     // foreach($decoded as $key => $val) {
+    //     //     echo "{$key}:" , implode("<br>", $val), "<br><br>";
+    //     // }
+    // }
 
     curl_close($ch);
+    fclose($file_handle);
 }
 
 echo $OUTPUT->footer();
