@@ -60,14 +60,9 @@ if ($data = $generatorform->get_data()) {           // add optional AND $attachm
 
     $content = "";
 
-    // /Applications/MAMP/htdocs/moodle/local/questiongenerator/temp
-    // $success = $mform->save_file('userfile', $fullpath, $override);
-    // $storedfile = $mform->save_stored_file('userfile', ...);
-
-
     if ($name = $generatorform->get_new_filename('uploaded_file')) {
         // Save text file content to content variable.
-        $content = $generatorform->get_file_content('uploaded_file');
+        // $content = $generatorform->get_file_content('uploaded_file');
 
         $file_name = $generatorform->get_new_filename('uploaded_file');
         $file_path = "temp/".$file_name;
@@ -104,27 +99,27 @@ if ($data = $generatorform->get_data()) {           // add optional AND $attachm
 
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_array);
-    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    
+
     $response = curl_exec($ch);
 
     echo $response;
 
-    // if($err = curl_error($ch)) {
-    //     echo $err;
-    // }
-    // else {
-    //     $decoded = json_decode($response, true);
-    //     // print_r($decoded);
+    if($err = curl_error($ch)) {
+        echo $err;
+    }
+    else {
+        $decoded = json_decode($response, true);
+        print_r($decoded);
 
-    //     // foreach($decoded as $key => $val) {
-    //     //     echo "{$key}:" , implode("<br>", $val), "<br><br>";
-    //     // }
-    // }
+        // foreach($decoded as $key => $val) {
+        //     echo "{$key}:" , implode("<br>", $val), "<br><br>";
+        // }
+    }
 
-    curl_close($ch);
     fclose($file_handle);
+    curl_close($ch);
 }
 
 echo $OUTPUT->footer();

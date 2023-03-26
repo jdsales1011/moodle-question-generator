@@ -17,16 +17,45 @@
 /**
  * @package     local_questiongenerator
  * @copyright   2023 Jivielyn Sales <jivielyn.sales@gmail.com>
+ * @copyright   based on work by 2022 Kacper Rokicki <k.k.rokicki@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+ /**
+ * Adds link to Course administration
+ *
+ * @param settings_navigation $nav
+ * @param context $context
+ * @throws coding_exception
+ * @throws moodle_exception
+ */
 
 defined('MOODLE_INTERNAL') || die();
-/**
- * Insert a link to index.php on the site front page navigation menu.
- *
- * @param navigation_node $frontpage Node representing the front page in the navigation tree.
- */
+
+// function local_questiongenerator_extend_settings_navigation(settings_navigation $nav, context $context) {
+//     global $DB;
+
+//     if ($context instanceof context_course && has_capability('local/questiongenerator:view', $context)) {
+//         $courseid = $context->get_course_context()->instanceid;
+//         if (!$course = $DB->get_record('course', array('id' => $courseid))) {
+//             throw new moodle_exception('invalidcourseid');
+//         }
+//         if (can_access_course($course)) {
+//             if ($course = $nav->get('courseadmin')) {
+//                 $url = new moodle_url('/local/questiongenerator/index.php', array('courseid' => $courseid));
+//                 $course->add(
+//                     get_string('linkname', 'local_questiongenerator'),
+//                     $url,
+//                     navigation_node::TYPE_CUSTOM,
+//                     null,
+//                     null,
+//                     new pix_icon('e/question', '')
+//                 );
+//             }
+//         }
+//     }
+// }
+
 function local_questiongenerator_extend_navigation_frontpage(navigation_node $frontpage) {
     $frontpage->add(
         get_string('pluginname', 'local_questiongenerator'),
