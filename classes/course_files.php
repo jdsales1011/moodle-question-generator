@@ -17,7 +17,7 @@
 /**
  * Internal API of local_coursefiles.
  *
- * @package    local_questiongenerator
+ * @package     local_questiongenerator
  * @copyright   2023 Jivielyn Sales <jivielyn.sales@gmail.com>
  * @copyright   based on work by 2017 Martin Gauk (@innoCampus, TU Berlin) and 2022 Kacper Rokicki <k.k.rokicki@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
