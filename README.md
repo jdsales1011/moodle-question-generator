@@ -40,3 +40,11 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with
 this program.  If not, see <https://www.gnu.org/licenses/>.
+
+## About
+
+Developed by: Jivielyn Sales <jivielyn.sales@gmail.com>
+
+Based on "Course Files" plugin: https://moodle.org/plugins/local_coursefiles
+
+GIT: https://github.com/jdsales1011/moodle-question-generator
