@@ -30,6 +30,12 @@ $plugin->version = 2023030800;
 $plugin->requires = 2020061500;
 $plugin->maturity = MATURITY_ALPHA;
 
-$plugin->dependencies = array(
-    'block_repo_filemanager' => ANY_VERSION
-);
+// $plugin->dependencies = array(
+//     'block_repo_filemanager' => ANY_VERSION
+// );
+
+// Create temporary directory with restricted access
+$tempdir = __DIR__.'/.temp/';
+if (!file_exists($tempdir)) {
+    mkdir($tempdir, 0700, true);
+}
