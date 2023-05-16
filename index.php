@@ -17,6 +17,7 @@
 /**
  * @package     local_questiongenerator
  * @copyright   2023 Jivielyn Sales <jivielyn.sales@gmail.com>
+ * @copyright   based on work by 2017 Martin Gauk (@innoCampus, TU Berlin) and 2022 Kacper Rokicki <k.k.rokicki@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -29,7 +30,7 @@ require_once($CFG->dirroot. '/local/questiongenerator/generation_form.php');
 $context = context_system::instance();
 $PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/local/questiongenerator/index.php'));
-$PAGE->set_pagelayout('standard');
+$PAGE->set_pagelayout('incourse');
 $PAGE->set_title($SITE->fullname);
 $PAGE->set_heading(get_string('pluginname', 'local_questiongenerator'));
 
