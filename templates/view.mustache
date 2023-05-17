@@ -106,33 +106,33 @@
     </table>
 
     <div>
-        <label for="num_ques">Number of Questions:</label>
+        <label for="num_ques">{{#str}}num_questions,local_questiongenerator{{/str}}</label>
         <input type="number" id="num_ques" name="num_ques" min="1" max="100" required>
     </div>
     
     <div>
-        <label for="type_question">Type of Question:</label>
+        <label for="type_question">{{#str}}type_questions,local_questiongenerator{{/str}}</label>
         <br>
         <div>
             <input type="radio" id="identification" name="type_question" value=1 checked>
-            <label for="identification">Identification</label><br>
+            <label for="identification">{{#str}}type:identification,local_questiongenerator{{/str}}</label><br>
         </div>
         
         <div>
             <input type="radio" id="trueorfalse" name="type_question" value=2>
-            <label for="trueorfalse">True or False</label><br>
+            <label for="trueorfalse">{{#str}}type:trueorfalse,local_questiongenerator{{/str}}</label><br>
         </div>
         
         <div>
             <input type="radio" id="multichoice" name="type_question" value=3>
-            <label for="multichoice">Multiple Choice</label>
+            <label for="multichoice">{{#str}}type:multichoice,local_questiongenerator{{/str}}</label>
         </div>
     </div>
     
     <div class="local_questiongenerator_files_actions">
             <div class="local_questiongenerator_files_action">
                 <button class="btn btn-secondary" type="submit" id="generate_btn" name="action" value="generate">
-                    Generate Questions
+                    {{#str}}generate,local_questiongenerator{{/str}}
                 </button>
             </div>
     </div>

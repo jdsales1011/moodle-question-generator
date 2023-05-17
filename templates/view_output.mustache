@@ -49,7 +49,7 @@
 }}
 
 <h2>
-    Question Generator
+    {{#str}}pluginname,local_questiongenerator{{/str}}
 </h2>
 
 {{#questions_exist}}
@@ -62,11 +62,11 @@
                 <th class="header c0" scope="col">
                     <input type="checkbox" class="local_questiongenerator_check_uncheck_all" name="check_uncheck_all" />
                 </th>
-                <th class="header c1" scope="col">Question</th>
+                <th class="header c1" scope="col">{{#str}}table:question,local_questiongenerator{{/str}}</th>
                 {{#is_multichoice}}
-                    <th class="header c2" scope="col">Choices</th>
+                    <th class="header c2" scope="col">{{#str}}table:choices,local_questiongenerator{{/str}}</th>
                 {{/is_multichoice}}
-                <th class="header c2" scope="col">Answer</th>
+                <th class="header c2" scope="col">{{#str}}table:answer,local_questiongenerator{{/str}}</th>
             </tr>
         </thead>
         <tbody>
@@ -90,7 +90,7 @@
     <div class="local_questiongenerator_files_actions">
             <div class="local_questiongenerator_files_action">
                 <button class="btn btn-secondary" type="submit" name="action" value="save">
-                    Save to Question Bank
+                    {{#str}}save_quesbank,local_questiongenerator{{/str}}
                 </button>
             </div>
     </div>
@@ -98,7 +98,7 @@
     </form>
 {{/questions_exist}}
 {{^questions_exist}}
-    <b>No questions generated</b>
+    <b>{{#str}}noquestions,local_questiongenerator{{/str}}</b>
 {{/questions_exist}}
 
 

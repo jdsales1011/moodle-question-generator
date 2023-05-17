@@ -26,14 +26,22 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Question Generator';
+$string['linkname'] = 'Question Generator';
+$string['coursefiles'] = 'Course Files';
 
 $string['entercontext'] = 'Enter context';
-$string['enter_num_questions'] = 'Enter number of questions';
-$string['generate'] = 'Generate';
-$string['identification'] = 'Identification';
-$string['trueorfalse'] = 'True or False';
-$string['multichoice'] = 'Multiple Choice';
-$string['type_of_ques'] = 'Type of Question';
+$string['num_questions'] = 'Number of Questions';
+$string['type_questions'] = 'Type of Question:';
+$string['generate'] = 'Generate Questions';
+$string['type:identification'] = 'Identification';
+$string['type:trueorfalse'] = 'True or False';
+$string['type:multichoice'] = 'Multiple Choice';
+$string['save_quesbank'] = 'Save to Question Bank';
+$string['noquestions'] = 'No questions generated.';
+$string['table:question'] = 'Question';
+$string['table:choices'] = 'Choices';
+$string['table:answer'] = 'Answer';
+
 
 $string['allcomponents'] = 'All components';
 $string['component'] = 'Component';
@@ -49,11 +57,9 @@ $string['filetype:other'] = 'Other';
 $string['filetype:video'] = 'Video';
 $string['filter:component'] = 'Filter component';
 $string['filter:filetype'] = 'Filter file type';
-$string['linkname'] = 'Course files';
 $string['mimetype'] = 'File type';
 $string['nothingfound'] = 'No files found';
 $string['nofileselected'] = 'You have not selected a file.';
-$string['pluginname'] = 'Course files';
 $string['privacy:metadata'] = 'The Course files plugin only displays existing files.';
 $string['download'] = 'Download selected files';
 $string['coursefiles:download'] = 'Download selected files';
