@@ -30,19 +30,19 @@
  * @throws coding_exception
  * @throws moodle_exception
  */
-function local_coursefiles_extend_settings_navigation(settings_navigation $nav, context $context) {
+function local_questiongenerator_extend_settings_navigation(settings_navigation $nav, context $context) {
     global $DB;
 
-    if ($context instanceof context_course && has_capability('local/coursefiles:view', $context)) {
+    if ($context instanceof context_course && has_capability('local/questiongenerator:view', $context)) {
         $courseid = $context->get_course_context()->instanceid;
         if (!$course = $DB->get_record('course', array('id' => $courseid))) {
             throw new moodle_exception('invalidcourseid');
         }
         if (can_access_course($course)) {
             if ($course = $nav->get('courseadmin')) {
-                $url = new moodle_url('/local/coursefiles/index.php', array('courseid' => $courseid));
+                $url = new moodle_url('/local/questiongenerator/index.php', array('courseid' => $courseid));
                 $course->add(
-                    // get_string('linkname', 'local_coursefiles'),
+                    // get_string('linkname', 'local_questiongenerator'),
                     "Question Generator",
                     $url,
                     navigation_node::TYPE_CUSTOM,
@@ -53,3 +53,4 @@ function local_coursefiles_extend_settings_navigation(settings_navigation $nav, 
             }
         }
     }
+}

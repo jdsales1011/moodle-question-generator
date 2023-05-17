@@ -65,7 +65,7 @@ class mimetypes {
             foreach ($types as $mime) {
                 if ($mime === $mimetype ||
                     (substr($mime, -1) === '%' && strncmp($mime, $mimetype, strlen($mime) - 1) === 0)) {
-                    return get_string('filetype:' . $name, 'local_coursefiles');
+                    return get_string('filetype:' . $name, 'local_questiongenerator');
                 }
             }
         }

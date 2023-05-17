@@ -1,37 +1,37 @@
-.local_coursefiles_menu {
+.local_questiongenerator_menu {
     width: 100%;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
-.local_coursefiles_menu .local_coursefiles_selection {
+.local_questiongenerator_menu .local_questiongenerator_selection {
     display: inline-table;
 }
 
-.local_coursefiles_selection {
+.local_questiongenerator_selection {
     margin: 0 5px;
 }
 
-.local_coursefiles_file_checkbox,
-.local_coursefiles_check_uncheck_all {
+.local_questiongenerator_file_checkbox,
+.local_questiongenerator_check_uncheck_all {
     margin-top: 5px;
     margin-left: 8px;
 }
 
-.local_coursefiles_files_actions {
+.local_questiongenerator_files_actions {
     margin-top: 25px;
 }
 
-.local_coursefiles_files_action {
+.local_questiongenerator_files_action {
     margin-top: 10px;
 }
 
-.local_coursefiles_table .c0 {
+.local_questiongenerator_table .c0 {
     width: 30px;
     padding-left: 2px;
     padding-right: 0;
 }
 
-.local_coursefiles_table {
+.local_questiongenerator_table {
     margin: 0;
 }

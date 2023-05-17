@@ -14,11 +14,11 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace local_coursefiles\components;
+namespace local_questiongenerator\components;
 
 use dml_exception;
 use file_storage;
-use local_coursefiles\course_file;
+use local_questiongenerator\course_file;
 use moodle_exception;
 use moodle_url;
 use stored_file;

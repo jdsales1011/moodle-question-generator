@@ -56,11 +56,11 @@
     <form action="{{{url}}}" method="post" id="filelist">
     <input name="sesskey" type="hidden" value="{{{sesskey}}}" />
 
-    <table class="local_coursefiles_table generaltable">
+    <table class="local_questiongenerator_table generaltable">
         <thead>
             <tr>
                 <th class="header c0" scope="col">
-                    <input type="checkbox" class="local_coursefiles_check_uncheck_all" name="check_uncheck_all" />
+                    <input type="checkbox" class="local_questiongenerator_check_uncheck_all" name="check_uncheck_all" />
                 </th>
                 <th class="header c1" scope="col">Question</th>
                 {{#is_multichoice}}
@@ -73,7 +73,7 @@
         {{#gen_questions}}
             <tr>
                 <td class="cell c0" style="text-align: left;">
-                    <input type="checkbox" class="local_coursefiles_file_checkbox" name="question[{{id}}]" />
+                    <input type="checkbox" class="local_questiongenerator_file_checkbox" name="question[{{id}}]" />
                 </td>
                 <td class="cell c1">{{question}}</td>
                 {{#is_multichoice}}
@@ -87,8 +87,8 @@
     <input type="hidden" name="file_name" value="{{file_name}}">
     <input type="hidden" name="type_question" value="{{type_questions}}">
 
-    <div class="local_coursefiles_files_actions">
-            <div class="local_coursefiles_files_action">
+    <div class="local_questiongenerator_files_actions">
+            <div class="local_questiongenerator_files_action">
                 <button class="btn btn-secondary" type="submit" name="action" value="save">
                     Save to Question Bank
                 </button>
@@ -105,8 +105,8 @@
 {{#js}}
     require(['jquery'], function($) {
     var nextstatus = true;
-    $('.local_coursefiles_check_uncheck_all').click(function() {
-        $('.local_coursefiles_file_checkbox').prop('checked', nextstatus);
+    $('.local_questiongenerator_check_uncheck_all').click(function() {
+        $('.local_questiongenerator_file_checkbox').prop('checked', nextstatus);
         nextstatus = !nextstatus;
     });
 });

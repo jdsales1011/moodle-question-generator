@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Privacy Subsystem implementation for local_coursefiles.
+ * Privacy Subsystem implementation for local_questiongenerator.
  *
  * @package    local_questiongenerator
  * @copyright  2022 Kacper Rokicki <k.k.rokicki@gmail.com>
@@ -28,7 +28,7 @@ namespace local_questiongenerator\privacy;
 use core_privacy\local\metadata\null_provider;
 
 /**
- * Privacy Subsystem for local_coursefiles implementing null_provider.
+ * Privacy Subsystem for local_questiongenerator implementing null_provider.
  *
  * @copyright  2022 Kacper Rokicki <k.k.rokicki@gmail.com>
  * @copyright  based on work by 2022 Martin Gauk (@innoCampus, TU Berlin)

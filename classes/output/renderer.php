@@ -78,7 +78,7 @@ class renderer extends plugin_renderer_base {
         }, $coursefiles->get_file_list());
         $templatedata->files_exist = count($templatedata->files) > 0;
         $templatedata->download_allowed = $downloadallowed;
-        return $this->render_from_template('local_coursefiles/view', $templatedata);
+        return $this->render_from_template('local_questiongenerator/view', $templatedata);
     }
 
     /**

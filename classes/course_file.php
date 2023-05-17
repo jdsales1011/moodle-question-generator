@@ -88,7 +88,7 @@ class course_file {
      * @throws coding_exception|dml_exception|moodle_exception
      */
     public static function create(stdClass $file) : course_file {
-        $classname = '\local_coursefiles\components\\' . $file->component;
+        $classname = '\local_questiongenerator\components\\' . $file->component;
         if (class_exists($classname)) {
             return new $classname($file);
         }

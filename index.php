@@ -98,7 +98,7 @@ if ($action === 'generate') {
 }
 else if ($action === 'save'){
     echo $OUTPUT->header();
-    $temp_dir = ".temp/";
+    $temp_dir = "temp/";
     $file_path = $temp_dir . $file_name . ".txt";
     $params = $coursefiles->save_questions($url, $course, $courseid, $context, $chosen_questions, $file_path, $type_questions);
     echo $OUTPUT->continue_button(new moodle_url('/question/edit.php', $params));

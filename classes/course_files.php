@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Internal API of local_coursefiles.
+ * Internal API of local_questiongenerator.
  *
  * @package     local_questiongenerator
  * @copyright   2023 Jivielyn Sales <jivielyn.sales@gmail.com>
@@ -54,7 +54,7 @@ require_once($CFG->dirroot . '/question/format/gift/format.php');
 
 /**
  * Class course_files
- * @package local_coursefiles
+ * @package local_questiongenerator
  */
 class course_files {
     /**
@@ -254,7 +254,7 @@ class course_files {
 
         asort($components, SORT_STRING | SORT_FLAG_CASE);
         $componentsall = array(
-            'all' => get_string('allcomponents', 'local_coursefiles')
+            'all' => get_string('allcomponents', 'local_questiongenerator')
         );
 
         $this->components = $componentsall + $components;
@@ -281,44 +281,6 @@ class course_files {
         return $checkedfiles;
     }
 
-    // /**
-    //  * Download a zip file of the files with the given ids.
-    //  *
-    //  * This function does not return if the zip archive could be created.
-    //  *
-    //  * @param array $fileids file ids
-    //  * @throws moodle_exception
-    //  */
-    // public function download_files(array $fileids) {
-    //     global $DB, $CFG;
-
-    //     if (count($fileids) == 0) {
-    //         throw new moodle_exception('nofileselected', 'local_coursefiles');
-    //     }
-
-    //     list($sqlin, $paramfids) = $DB->get_in_or_equal(array_keys($fileids), SQL_PARAMS_QM);
-    //     $sql = 'SELECT f.*, r.repositoryid, r.reference, r.lastsync AS referencelastsync
-    //             FROM {files} f
-    //             LEFT JOIN {files_reference} r ON (f.referencefileid = r.id)
-    //             WHERE f.id ' . $sqlin;
-    //     $res = $DB->get_records_sql($sql, $paramfids);
-
-    //     $checkedfiles = $this->check_files($res);
-    //     $fs = get_file_storage();
-    //     $filesforzipping = array();
-    //     foreach ($checkedfiles as $file) {
-    //         $fname = $this->get_unique_file_name($file->filename, $filesforzipping);
-    //         $filesforzipping[$fname] = $fs->get_file_instance($file);
-    //     }
-
-    //     $filename = clean_filename($this->coursemodinfo->get_course()->fullname . '.zip');
-    //     $tmpfile = tempnam($CFG->tempdir . '/', 'local_coursefiles');
-    //     $zip = new zip_packer();
-    //     if ($zip->archive_to_pathname($filesforzipping, $tmpfile)) {
-    //         send_temp_file($tmpfile, $filename);
-    //     }
-    // }
-
     /**
      * Sends over the selected files to the AI web server for question generation.
      *
@@ -332,7 +294,7 @@ class course_files {
     public function generate_questions(array $fileids, int $number, int $qtype) {
         // API.
         $ch = curl_init();          // Initialize a new cURL session.
-        $api_url = "http://127.0.0.1:2000/qgplugin/api/";
+        $api_url = "http://127.0.0.1:5000/qgplugin/api/";
         // $api_url = "https://moodle-qgplugin-api-production.up.railway.app/qgplugin/api/";
         curl_setopt($ch, CURLOPT_URL, $api_url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -343,7 +305,7 @@ class course_files {
         global $DB, $CFG, $USER;
         
         if (count($fileids) == 0) {
-            throw new moodle_exception('nofileselected', 'local_coursefiles');
+            throw new moodle_exception('nofileselected', 'local_questiongenerator');
         }
 
         list($sqlin, $paramfids) = $DB->get_in_or_equal(array_keys($fileids), SQL_PARAMS_QM);
@@ -628,11 +590,11 @@ class course_files {
      * @throws coding_exception
      */
     public static function get_file_types(): array {
-        $types = array('all' => get_string('filetype:all', 'local_coursefiles'));
+        $types = array('all' => get_string('filetype:all', 'local_questiongenerator'));
         foreach (array_keys(mimetypes::get_mime_types()) as $type) {
-            $types[$type] = get_string('filetype:' . $type, 'local_coursefiles');
+            $types[$type] = get_string('filetype:' . $type, 'local_questiongenerator');
         }
-        $types['other'] = get_string('filetype:other', 'local_coursefiles');
+        $types['other'] = get_string('filetype:other', 'local_questiongenerator');
         return $types;
     }
 

@@ -35,7 +35,7 @@ $plugin->maturity = MATURITY_ALPHA;
 // );
 
 // Create temporary directory with restricted access
-$tempdir = __DIR__.'/.temp/';
+$tempdir = __DIR__.'/temp/';
 if (!file_exists($tempdir)) {
     mkdir($tempdir, 0700, true);
 }

@@ -24,23 +24,23 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
-    'local/coursefiles:view' => array(
+    'local/questiongenerator:view' => array(
         'riskbitmask' => RISK_PERSONAL,
         'captype' => 'read',
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => array(
             // 'student' => CAP_PREVENT,
+            'student' => CAP_ALLOW,
             'teacher' => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
             'manager' => CAP_ALLOW
         ),
     ),
-    'local/coursefiles:download' => array(
+    'local/questiongenerator:download' => array(
         'riskbitmask' => RISK_PERSONAL,
         'captype' => 'read',
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => array(
-            // 'student' => CAP_PREVENT,
             'teacher' => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
             'manager' => CAP_ALLOW
