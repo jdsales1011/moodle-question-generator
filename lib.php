@@ -42,13 +42,12 @@ function local_questiongenerator_extend_settings_navigation(settings_navigation 
             if ($course = $nav->get('courseadmin')) {
                 $url = new moodle_url('/local/questiongenerator/index.php', array('courseid' => $courseid));
                 $course->add(
-                    // get_string('linkname', 'local_questiongenerator'),
-                    "Question Generator",
+                    get_string('linkname', 'local_questiongenerator'),
                     $url,
                     navigation_node::TYPE_CUSTOM,
                     null,
                     null,
-                    new pix_icon('i/backup', '')
+                    new pix_icon('e/question', '')
                 );
             }
         }

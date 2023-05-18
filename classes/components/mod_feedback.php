@@ -22,7 +22,7 @@ use moodle_url;
 
 /**
  * Class mod_feedback
- * @package local_coursefiles
+ * @package local_questiongenerator
  * @author Jeremy FitzPatrick
  * @copyright 2022 Te Wānanga o Aotearoa
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
