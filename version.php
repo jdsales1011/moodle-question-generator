@@ -27,12 +27,8 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'local_questiongenerator';
 $plugin->release = '0.1.0';
 $plugin->version = 2023030800;
-$plugin->requires = 2020061500;
-$plugin->maturity = MATURITY_ALPHA;
-
-// $plugin->dependencies = array(
-//     'block_repo_filemanager' => ANY_VERSION
-// );
+$plugin->requires = 2019111801;     // Version 3.8.1
+$plugin->maturity = MATURITY_STABLE;
 
 // Create temporary directory with restricted access
 $tempdir = __DIR__.'/temp/';
