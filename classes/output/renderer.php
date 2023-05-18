@@ -136,13 +136,10 @@ class renderer extends plugin_renderer_base {
         string $file_name)
     : string {
         $templatedata = new stdClass();
-        // $templatedata->json_questions = $gen_questions;
         $temp_dir = "temp/";
         $file_path = $temp_dir . $file_name . ".txt";
         $gen_questions = file_get_contents($file_path);
         $gen_questions = json_decode($gen_questions, true)['questions'];
-        // $reencoded = json_encode($gen_questions);
-        // $templatedata->json_questions = $reencoded;
         $templatedata->file_name = $file_name;
         $templatedata->gen_questions = $gen_questions;
         $templatedata->type_questions = $type_questions;
