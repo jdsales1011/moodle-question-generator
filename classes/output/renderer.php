@@ -142,7 +142,7 @@ class renderer extends plugin_renderer_base {
         $api_response = json_decode($gen_questions, true);
 
         if($templatedata->is_success = $api_response['status'] == "success"){
-            $gen_questions = json_decode($gen_questions, true)['questions'];
+            $gen_questions = $api_response['questions'];
             $templatedata->is_success = true;
             $templatedata->file_name = $file_name;
             $templatedata->gen_questions = $gen_questions;
@@ -160,13 +160,5 @@ class renderer extends plugin_renderer_base {
             }
             return $this->render_from_template('local_questiongenerator/view_output', $templatedata);
         }
-
-        // $gen_questions = json_decode($gen_questions, true)['questions'];
-        // $templatedata->file_name = $file_name;
-        // $templatedata->gen_questions = $gen_questions;
-        // $templatedata->type_questions = $type_questions;
-        // $templatedata->is_multichoice = $type_questions == 3;   
-        // $templatedata->questions_exist = count($gen_questions) > 0;
-        // return $this->render_from_template('local_questiongenerator/view_output', $templatedata);
     }
 }
