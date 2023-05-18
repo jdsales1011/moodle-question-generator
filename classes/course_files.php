@@ -294,8 +294,8 @@ class course_files {
     public function generate_questions(array $fileids, int $number, int $qtype) {
         // API.
         $ch = curl_init();          // Initialize a new cURL session.
-        $api_url = "http://127.0.0.1:5000/qgplugin/api/";
-        // $api_url = "https://moodle-qgplugin-api-production.up.railway.app/qgplugin/api/";
+        // $api_url = "http://127.0.0.1:5000/qgplugin/api/";
+        $api_url = "https://moodle-qgplugin-api-production.up.railway.app/qgplugin/api/";
         curl_setopt($ch, CURLOPT_URL, $api_url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             // 'Content-Type: multipart/form-data'
@@ -307,7 +307,7 @@ class course_files {
         if (count($fileids) == 0) {
             throw new moodle_exception('nofileselected', 'local_questiongenerator');
         }
-        
+
         list($sqlin, $paramfids) = $DB->get_in_or_equal(array_keys($fileids), SQL_PARAMS_QM);
         $sql = 'SELECT f.*, r.repositoryid, r.reference, r.lastsync AS referencelastsync
                 FROM {files} f
