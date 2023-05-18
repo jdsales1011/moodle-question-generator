@@ -139,12 +139,34 @@ class renderer extends plugin_renderer_base {
         $temp_dir = "temp/";
         $file_path = $temp_dir . $file_name . ".txt";
         $gen_questions = file_get_contents($file_path);
-        $gen_questions = json_decode($gen_questions, true)['questions'];
-        $templatedata->file_name = $file_name;
-        $templatedata->gen_questions = $gen_questions;
-        $templatedata->type_questions = $type_questions;
-        $templatedata->is_multichoice = $type_questions == 3;   
-        $templatedata->questions_exist = count($gen_questions) > 0;
-        return $this->render_from_template('local_questiongenerator/view_output', $templatedata);
+        $api_response = json_decode($gen_questions, true);
+
+        if($templatedata->is_success = $api_response['status'] == "success"){
+            $gen_questions = json_decode($gen_questions, true)['questions'];
+            $templatedata->is_success = true;
+            $templatedata->file_name = $file_name;
+            $templatedata->gen_questions = $gen_questions;
+            $templatedata->type_questions = $type_questions;
+            $templatedata->is_multichoice = $type_questions == 3;   
+            $templatedata->questions_exist = count($gen_questions) > 0;
+            return $this->render_from_template('local_questiongenerator/view_output', $templatedata);
+        }
+        else{
+            $templatedata->message = $api_response['error']['message'];
+
+            // Delete the temporary file.
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
+            return $this->render_from_template('local_questiongenerator/view_output', $templatedata);
+        }
+
+        // $gen_questions = json_decode($gen_questions, true)['questions'];
+        // $templatedata->file_name = $file_name;
+        // $templatedata->gen_questions = $gen_questions;
+        // $templatedata->type_questions = $type_questions;
+        // $templatedata->is_multichoice = $type_questions == 3;   
+        // $templatedata->questions_exist = count($gen_questions) > 0;
+        // return $this->render_from_template('local_questiongenerator/view_output', $templatedata);
     }
 }

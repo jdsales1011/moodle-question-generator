@@ -52,54 +52,60 @@
     {{#str}}pluginname,local_questiongenerator{{/str}}
 </h2>
 
-{{#questions_exist}}
-    <form action="{{{url}}}" method="post" id="filelist">
-    <input name="sesskey" type="hidden" value="{{{sesskey}}}" />
+{{#is_success}}
+    {{#questions_exist}}
+        <form action="{{{url}}}" method="post" id="filelist">
+        <input name="sesskey" type="hidden" value="{{{sesskey}}}" />
 
-    <table class="local_questiongenerator_table generaltable">
-        <thead>
-            <tr>
-                <th class="header c0" scope="col">
-                    <input type="checkbox" class="local_questiongenerator_check_uncheck_all" name="check_uncheck_all" />
-                </th>
-                <th class="header c1" scope="col">{{#str}}table:question,local_questiongenerator{{/str}}</th>
-                {{#is_multichoice}}
-                    <th class="header c2" scope="col">{{#str}}table:choices,local_questiongenerator{{/str}}</th>
-                {{/is_multichoice}}
-                <th class="header c2" scope="col">{{#str}}table:answer,local_questiongenerator{{/str}}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {{#gen_questions}}
-            <tr>
-                <td class="cell c0" style="text-align: left;">
-                    <input type="checkbox" class="local_questiongenerator_file_checkbox" name="question[{{id}}]" />
-                </td>
-                <td class="cell c1">{{question}}</td>
-                {{#is_multichoice}}
-                    <td class="cell c2">{{choices}}</td>
-                {{/is_multichoice}}
-                <td class="cell c2">{{answer}}</td>
-            </tr>
-        {{/gen_questions}}
-    </table>
+        <table class="local_questiongenerator_table generaltable">
+            <thead>
+                <tr>
+                    <th class="header c0" scope="col">
+                        <input type="checkbox" class="local_questiongenerator_check_uncheck_all" name="check_uncheck_all" />
+                    </th>
+                    <th class="header c1" scope="col">{{#str}}table:question,local_questiongenerator{{/str}}</th>
+                    {{#is_multichoice}}
+                        <th class="header c2" scope="col">{{#str}}table:choices,local_questiongenerator{{/str}}</th>
+                    {{/is_multichoice}}
+                    <th class="header c2" scope="col">{{#str}}table:answer,local_questiongenerator{{/str}}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#gen_questions}}
+                <tr>
+                    <td class="cell c0" style="text-align: left;">
+                        <input type="checkbox" class="local_questiongenerator_file_checkbox" name="question[{{id}}]" />
+                    </td>
+                    <td class="cell c1">{{question}}</td>
+                    {{#is_multichoice}}
+                        <td class="cell c2">{{choices}}</td>
+                    {{/is_multichoice}}
+                    <td class="cell c2">{{answer}}</td>
+                </tr>
+            {{/gen_questions}}
+        </table>
 
-    <input type="hidden" name="file_name" value="{{file_name}}">
-    <input type="hidden" name="type_question" value="{{type_questions}}">
+        <input type="hidden" name="file_name" value="{{file_name}}">
+        <input type="hidden" name="type_question" value="{{type_questions}}">
 
-    <div class="local_questiongenerator_files_actions">
-            <div class="local_questiongenerator_files_action">
-                <button class="btn btn-secondary" type="submit" name="action" value="save">
-                    {{#str}}save_quesbank,local_questiongenerator{{/str}}
-                </button>
-            </div>
-    </div>
+        <div class="local_questiongenerator_files_actions">
+                <div class="local_questiongenerator_files_action">
+                    <button class="btn btn-secondary" type="submit" name="action" value="save">
+                        {{#str}}save_quesbank,local_questiongenerator{{/str}}
+                    </button>
+                </div>
+        </div>
 
-    </form>
-{{/questions_exist}}
-{{^questions_exist}}
-    <b>{{#str}}noquestions,local_questiongenerator{{/str}}</b>
-{{/questions_exist}}
+        </form>
+    {{/questions_exist}}
+    {{^questions_exist}}
+        <b>{{#str}}noquestions,local_questiongenerator{{/str}}</b>
+    {{/questions_exist}}
+{{/is_success}}
+
+{{^is_success}}
+    <b>{{message}}</b>
+{{/is_success}}
 
 
 {{#js}}
