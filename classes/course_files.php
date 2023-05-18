@@ -307,7 +307,7 @@ class course_files {
         if (count($fileids) == 0) {
             throw new moodle_exception('nofileselected', 'local_questiongenerator');
         }
-
+        
         list($sqlin, $paramfids) = $DB->get_in_or_equal(array_keys($fileids), SQL_PARAMS_QM);
         $sql = 'SELECT f.*, r.repositoryid, r.reference, r.lastsync AS referencelastsync
                 FROM {files} f
